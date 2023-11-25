@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 플레이어의 움직임을 입력받아 이벤트 호출
+/// </summary>
 public class PlayerInputController : PlayerController
-{   //플레이어의 움직임을 감지하는 스크립트
-
+{   
     private Camera _camera;
 
     private void Awake()

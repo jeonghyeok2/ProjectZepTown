@@ -4,41 +4,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ ¿òÁ÷ÀÓÀ» °¨Áö¹ŞÀ¸¸é °ªÀ» Àü´Ş¹Ş¾Æ ¿òÁ÷ÀÌ´Â ½ºÅ©¸³Æ®
-/// ÀÌº¥Æ®¸¦ ½ÇÇàÇÏ±â À§ÇÑ º¯¼ö ¼³Á¤
+/// í”Œë ˆì´ì–´ì˜ ì›€ì§ì„ì„ ê°ì§€ë°›ìœ¼ë©´ ê°’ì„ ì „ë‹¬ë°›ì•„ ì›€ì§ì´ëŠ” ìŠ¤í¬ë¦½íŠ¸
+/// ì´ë²¤íŠ¸ë¥¼ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ë³€ìˆ˜ ì„¤ì •
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {   
     PlayerController _controller;
-    //¿òÁ÷ÀÌ±â À§ÇÑ ¹æÇâº¯¼ö¸¦ ¸¸µé°í ÃÊ±âÈ­ÇÔ
+    //ì›€ì§ì´ê¸° ìœ„í•œ ë°©í–¥ë³€ìˆ˜ë¥¼ ë§Œë“¤ê³  ì´ˆê¸°í™”í•¨
     Vector2 _movementDirection = Vector2.zero;
-    //ÈûÀ» ÁÖ±âÀ§ÇÑ ¹°¸®
+    //í˜ì„ ì£¼ê¸°ìœ„í•œ ë¬¼ë¦¬
     Rigidbody2D _rigid;
-    //Á÷·ÄÈ­
-    [SerializeField] private int _speed; //¼Óµµ
+    //ì§ë ¬í™”
+    [SerializeField] private int _speed; //ì†ë„
 
     private void Awake()
-    {   //°ªÀ» ³Ö¾îÁÜ
+    {   //ê°’ì„ ë„£ì–´ì¤Œ
         _controller = GetComponent<PlayerController>();
         _rigid = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
-    {   // _controllerÀÇ OnMoveEvent¿¡ MoveÇÔ¼ö¸¦ ±¸µ¶ÇÔ
+    {   // _controllerì˜ OnMoveEventì— Moveí•¨ìˆ˜ë¥¼ êµ¬ë…í•¨
         _controller.OnMoveEvent += Move;
     }
 
     private void FixedUpdate()
-    {   //¹æÇâ °ªÀÌ 0¿¡¼­ Á¤ÇØÁö¸é Player°¡ ¿òÁ÷ÀÌ´Â ÇÔ¼ö°¡ ÀÛµ¿µÊ
+    {   //ë°©í–¥ ê°’ì´ 0ì—ì„œ ì •í•´ì§€ë©´ Playerê°€ ì›€ì§ì´ëŠ” í•¨ìˆ˜ê°€ ì‘ë™ë¨
         ApplyMovement(_movementDirection);
     }
 
     private void Move(Vector2 _direction)
-    {   //°ªÀ» ÀÔ·Â¹Ş¾Æ OnMove°¡ ½ÇÇàµÇ¸é CallMoveEventÇÔ¼ö°¡ ½ÇÇàµÊ ±×·³ 
-        //ÇÔ¼ö¾È¿¡ ÀÖ´Â Event°¡ ½ÇÇàµÇ°í ±¸µ¶ÇÑ Move°¡ ¹æÇâÀ» ¾Ë·ÁÁÜ 
+    {   //ê°’ì„ ì…ë ¥ë°›ì•„ OnMoveê°€ ì‹¤í–‰ë˜ë©´ CallMoveEventí•¨ìˆ˜ê°€ ì‹¤í–‰ë¨ ê·¸ëŸ¼ 
+        //í•¨ìˆ˜ì•ˆì— ìˆëŠ” Eventê°€ ì‹¤í–‰ë˜ê³  êµ¬ë…í•œ Moveê°€ ë°©í–¥ì„ ì•Œë ¤ì¤Œ 
         _movementDirection = _direction;
     }
-    private void ApplyMovement(Vector2 _direction) //¿òÁ÷ÀÓ ¹æÇâ * ¼Óµµ
+    private void ApplyMovement(Vector2 _direction) //ì›€ì§ì„ ë°©í–¥ * ì†ë„
     {
         _direction = _direction * _speed;
         _rigid.velocity = _direction;

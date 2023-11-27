@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ ¿òÁ÷ÀÓÀ» ÀÔ·Â¹Ş¾Æ ÀÌº¥Æ® È£Ãâ
+/// í”Œë ˆì´ì–´ì˜ ì›€ì§ì„ì„ ì…ë ¥ë°›ì•„ ì´ë²¤íŠ¸ í˜¸ì¶œ
 /// </summary>
 public class PlayerInputController : PlayerController
 {   
@@ -12,25 +12,24 @@ public class PlayerInputController : PlayerController
 
     private void Awake()
     {
-        _camera = Camera.main; //MainÄ«¸Ş¶ó¸¦ °¡Á®¿À°Ú´Ù.
+        _camera = Camera.main; //Mainì¹´ë©”ë¼ë¥¼ ê°€ì ¸ì˜¤ê² ë‹¤.
     }
 
     public void OnMove(InputValue _value)
     {
         Vector2 _moveInput = _value.Get<Vector2>();
-        CallMoveEvent(_moveInput); //ÀÌº¥Æ® È£Ãâ 
+        CallMoveEvent(_moveInput); //ì´ë²¤íŠ¸ í˜¸ì¶œ 
     }
     public void OnLook(InputValue _value)
-    {   //InputSystem¿¡ ÀÖ´Â LookÀÇ °ªÀ» °¡Áö°í¿Í¼­ Vector2°ªÀ¸·Î ÀúÀå
+    {   //InputSystemì— ìˆëŠ” ë§ˆìš°ìŠ¤ í¬ì§€ì…˜ì˜ Vector2ê°’ì„ ì €ì¥
         Vector2 _lookAim = _value.Get<Vector2>();
-        //Ä«¸Ş¶óÀÇ ¿ùµå ÁÂÇ¥·Î ¹Ù²ãÁÜ
+        //ì¹´ë©”ë¼ì˜ ì›”ë“œ ì¢Œí‘œë¡œ ë°”ê¿”ì¤Œ
         Vector2 _worldPos = _camera.ScreenToWorldPoint(_lookAim);
-        //¸¶¿ì½º Æ÷Áö¼Ç°ú ÇöÀç ³ªÀÇ Æ÷Áö¼ÇÀ» ¹Ù²Ù°í °ªÀ» 1·Î ¸¸µé¾îÁÜ == ¹æÇâÀ» ±¸ÇÔ
+        //ë§ˆìš°ìŠ¤ í¬ì§€ì…˜ê³¼ í˜„ì¬ ë‚˜ì˜ í¬ì§€ì…˜ì„ ë¹¼ê³  ê°’ì„ 1ë¡œ ë§Œë“¤ì–´ì¤Œ == ë°©í–¥ì„ êµ¬í•¨
         _lookAim = (_worldPos - (Vector2)transform.position).normalized;
-        //
         if (_lookAim.magnitude >= .9f)
         {
-            CallLookEvent(_lookAim); //ÀÌº¥Æ® È£Ãâ
+            CallLookEvent(_lookAim); //ì´ë²¤íŠ¸ í˜¸ì¶œ
         }
     }
 }

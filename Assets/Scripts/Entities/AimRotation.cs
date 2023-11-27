@@ -20,7 +20,11 @@ public class AimRotation : MonoBehaviour
 
     private void OnAim(Vector2 vector)
     {
-        float rotz = Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
-        _characterRenderer.flipX = rotz ;
+        //각도가 마이너스가 되면 좌우 반전
+        float _mousePosition = Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
+        if (_mousePosition < 0)
+            _characterRenderer.flipX = true;
+        else
+            _characterRenderer.flipX = false;
     }
 }

@@ -5,19 +5,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Event´Â µ¨¸®°ÔÀÌÆ®¿Í °°ÀÌ »ç¿ë°¡´ÉÇÑµ¥ Actionµµ ÀÚ¼¼È÷ º¸¸é DelegateÀÓ
+/// EventëŠ” ë¸ë¦¬ê²Œì´íŠ¸ì™€ ê°™ì´ ì‚¬ìš©ê°€ëŠ¥í•œë° Actionë„ ìì„¸íˆ ë³´ë©´ Delegateì„
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
 
-    public void CallMoveEvent(Vector2 direction) //¿ÉÀú¹ö°¡ ½ÇÇà
+    public void CallMoveEvent(Vector2 direction) //ì˜µì €ë²„ê°€ ì‹¤í–‰
     {
         OnMoveEvent?.Invoke(direction);
-        //OnMoveEvent¿¡ ±¸µ¶ÇÑ ¸ğµç ¾ÆÀÌÅÛÀÌ È£ÃâµÊ
+        //OnMoveEventì— êµ¬ë…í•œ ëª¨ë“  ì•„ì´í…œì´ í˜¸ì¶œë¨
     }
-    public void CallLookEvent(Vector2 direction) //¿ÉÀú¹ö
+    public void CallLookEvent(Vector2 direction) //ì˜µì €ë²„
     {
         OnLookEvent?.Invoke(direction);
     }

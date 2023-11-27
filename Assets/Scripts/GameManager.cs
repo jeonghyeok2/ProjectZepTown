@@ -13,12 +13,11 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance = this;
+        Instance = this;
         }
     }
     private void Start()
     {
-        PlayerPrefs.SetString("PlayerName", "jeonghyeok");
         _playerName.text = PlayerPrefs.GetString("PlayerName");
     }
 }

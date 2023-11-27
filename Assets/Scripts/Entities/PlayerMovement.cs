@@ -10,6 +10,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {   
     PlayerController _controller;
+    Animator _animator;
     //움직이기 위한 방향변수를 만들고 초기화함
     Vector2 _movementDirection = Vector2.zero;
     //힘을 주기위한 물리
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {   //값을 넣어줌
         _controller = GetComponent<PlayerController>();
         _rigid = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -31,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {   //방향 값이 0에서 정해지면 Player가 움직이는 함수가 작동됨
         ApplyMovement(_movementDirection);
+    }
+    private void LateUpdate()
+    {
+        _animator.SetFloat("Walk", _movementDirection.magnitude);
     }
 
     private void Move(Vector2 _direction)

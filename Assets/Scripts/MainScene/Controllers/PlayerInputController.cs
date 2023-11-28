@@ -27,6 +27,7 @@ public class PlayerInputController : PlayerController
         Vector2 _worldPos = _camera.ScreenToWorldPoint(_lookAim);
         //마우스 포지션과 현재 나의 포지션을 빼고 값을 1로 만들어줌 == 방향을 구함
         _lookAim = (_worldPos - (Vector2)transform.position).normalized;
+
         if (_lookAim.magnitude >= .9f)
         {
             CallLookEvent(_lookAim); //이벤트 호출

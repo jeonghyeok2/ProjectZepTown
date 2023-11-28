@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     private void _playerChangeWindowOpen()
     {
+        Time.timeScale = 0; //게임 시간 정지
         _playerChangeWindow.transform.GetChild(1).gameObject.SetActive(true);
     }//플레이어 변경 창 
     private void NameListWindowOpen() //참석자 창 뜨게하기
@@ -58,12 +59,14 @@ public class GameManager : MonoBehaviour
     }
     private void NameChangeWindowOpen() //현재 플레이어 이름 창 뜨게하기
     {
+        Time.timeScale = 0; //게임 시간 정지
         _changeNameWindow.transform.GetChild(1).gameObject.SetActive(true);
     }
     private void NameChange() //현재 플레이어 이름 변경하기
     {
         if (_changeName.text.Length <= 10 && _changeName.text.Length >= 2)
         {
+            Time.timeScale = 1; //게임 시간 작동
             PlayerPrefs.SetString("PlayerName", _changeName.text);
             _playerName.text = PlayerPrefs.GetString("PlayerName");
             _changeNameWindow.transform.GetChild(1).gameObject.SetActive(false);
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
     private void PlayerChange(int index)
     {
         PlayerPrefs.SetInt("playerChoice", index);
+        Time.timeScale = 1; //게임 시간 작동
         switch (index)
         {
             case 0:

@@ -3710,9 +3710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animators:
-  - {fileID: 9100000, guid: 8f7c5cf0c1f5c804492cae439a1fe4c3, type: 2}
   - {fileID: 22100000, guid: b48681d22fb9e1c4eae225e8f8a49251, type: 2}
   - {fileID: 22100000, guid: f51d17c40ee0b7143af46b4680134115, type: 2}
+  - {fileID: 9100000, guid: 8f7c5cf0c1f5c804492cae439a1fe4c3, type: 2}
 --- !u!1 &1163483268
 GameObject:
   m_ObjectHideFlags: 0
@@ -4926,7 +4926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537940473}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

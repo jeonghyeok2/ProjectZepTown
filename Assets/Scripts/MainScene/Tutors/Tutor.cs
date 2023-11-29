@@ -19,7 +19,7 @@ public class Tutor : MonoBehaviour
 
     private string Text()
     {
-        _text = "ºÎ¸£¼Ì³ª¿ä??";
+        _text = "ë¶€ë¥´ì…¨ë‚˜ìš”??";
         return _text;
     }
 

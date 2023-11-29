@@ -9,19 +9,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _playerName; // ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ Ãâ·Â
-    [SerializeField] private TextMeshProUGUI _changeName; // ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ º¯°æ Text
+    [SerializeField] private TextMeshProUGUI _playerName; // í”Œë ˆì´ì–´ì˜ ì´ë¦„ ì¶œë ¥
+    [SerializeField] private TextMeshProUGUI _changeName; // í”Œë ˆì´ì–´ì˜ ì´ë¦„ ë³€ê²½ Text
     [SerializeField] private TextMeshProUGUI _nowTime;
     public TextMeshProUGUI _tutorText;
     public string _text;
-    public static GameManager Instance; //°ÔÀÓ ¸Å´ÏÁ®
+    public static GameManager Instance; //ê²Œì„ ë§¤ë‹ˆì ¸
 
-    public GameObject _PopUpWindow; //ÆË¾÷Ã¢
-    public GameObject _changeNameWindow; //ÀÌ¸§ º¯°æ Ã¢ ¹öÆ° 
-    public GameObject _nameList; //Âü¼®ÀÚ Ã¢ ¹öÆ°
-    public GameObject _playerChangeWindow; //Ä³¸¯ÅÍ º¯°æ Ã¢ ¹öÆ°
+    public GameObject _PopUpWindow; //íŒì—…ì°½
+    public GameObject _changeNameWindow; //ì´ë¦„ ë³€ê²½ ì°½ ë²„íŠ¼ 
+    public GameObject _nameList; //ì°¸ì„ì ì°½ ë²„íŠ¼
+    public GameObject _playerChangeWindow; //ìºë¦­í„° ë³€ê²½ ì°½ ë²„íŠ¼
     public GameObject _tutorTextPanel;
-    public Button _nameChangeBtn; //ÇÃ·¹ÀÌ¾î ÀÌ¸§ º¯°æ È®Á¤ ¹öÆ°
+    public Button _nameChangeBtn; //í”Œë ˆì´ì–´ ì´ë¦„ ë³€ê²½ í™•ì • ë²„íŠ¼
     public Button _firBtn;
     public Button _SecBtn;
     public Button _thiBtn;
@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
         {
              Instance = this;
         }
-        Button _nameListBtn = _nameList.GetComponent<Button>(); //¹öÆ° ÁöÁ¤ÇØÁÖ±â
-        Button _nameChangeWindowBtn = _changeNameWindow.GetComponent<Button>(); //¹öÆ° ÁöÁ¤ÇØÁÖ±â
-        Button _playerChangeWindowBtn = _playerChangeWindow.GetComponent<Button>(); //¹öÆ° ÁöÁ¤ÇØÁÖ±â
+        Button _nameListBtn = _nameList.GetComponent<Button>(); //ë²„íŠ¼ ì§€ì •í•´ì£¼ê¸°
+        Button _nameChangeWindowBtn = _changeNameWindow.GetComponent<Button>(); //ë²„íŠ¼ ì§€ì •í•´ì£¼ê¸°
+        Button _playerChangeWindowBtn = _playerChangeWindow.GetComponent<Button>(); //ë²„íŠ¼ ì§€ì •í•´ì£¼ê¸°
 
         _nameChangeBtn.onClick.AddListener(() => NameChange());
         _nameChangeWindowBtn.onClick.AddListener(() => NameChangeWindowOpen());
@@ -49,31 +49,31 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _playerName.text = PlayerPrefs.GetString("PlayerName"); //ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ º¯°æ
+        _playerName.text = PlayerPrefs.GetString("PlayerName"); //í”Œë ˆì´ì–´ì˜ ì´ë¦„ ë³€ê²½
     }
     private void Update()
     {
-        _nowTime.text = DateTime.Now.ToString("HH½Ã mmºĞ ");
+        _nowTime.text = DateTime.Now.ToString("HHì‹œ mmë¶„ ");
     }
     private void _playerChangeWindowOpen()
     {
-        Time.timeScale = 0; //°ÔÀÓ ½Ã°£ Á¤Áö
+        Time.timeScale = 0; //ê²Œì„ ì‹œê°„ ì •ì§€
         _playerChangeWindow.transform.GetChild(1).gameObject.SetActive(true);
-    }//ÇÃ·¹ÀÌ¾î º¯°æ Ã¢ 
-    private void NameListWindowOpen() //Âü¼®ÀÚ Ã¢ ¶ß°ÔÇÏ±â
+    }//í”Œë ˆì´ì–´ ë³€ê²½ ì°½ 
+    private void NameListWindowOpen() //ì°¸ì„ì ì°½ ëœ¨ê²Œí•˜ê¸°
     {
         _nameList.transform.GetChild(1).gameObject.SetActive(true);
     }
-    private void NameChangeWindowOpen() //ÇöÀç ÇÃ·¹ÀÌ¾î ÀÌ¸§ Ã¢ ¶ß°ÔÇÏ±â
+    private void NameChangeWindowOpen() //í˜„ì¬ í”Œë ˆì´ì–´ ì´ë¦„ ì°½ ëœ¨ê²Œí•˜ê¸°
     {
-        Time.timeScale = 0; //°ÔÀÓ ½Ã°£ Á¤Áö
+        Time.timeScale = 0; //ê²Œì„ ì‹œê°„ ì •ì§€
         _changeNameWindow.transform.GetChild(1).gameObject.SetActive(true);
     }
-    private void NameChange() //ÇöÀç ÇÃ·¹ÀÌ¾î ÀÌ¸§ º¯°æÇÏ±â
+    private void NameChange() //í˜„ì¬ í”Œë ˆì´ì–´ ì´ë¦„ ë³€ê²½í•˜ê¸°
     {
         if (_changeName.text.Length <= 10 && _changeName.text.Length >= 2)
         {
-            Time.timeScale = 1; //°ÔÀÓ ½Ã°£ ÀÛµ¿
+            Time.timeScale = 1; //ê²Œì„ ì‹œê°„ ì‘ë™
             PlayerPrefs.SetString("PlayerName", _changeName.text);
             _playerName.text = PlayerPrefs.GetString("PlayerName");
             _changeNameWindow.transform.GetChild(1).gameObject.SetActive(false);
@@ -83,10 +83,10 @@ public class GameManager : MonoBehaviour
             _changeName.text = null;
         }
     }
-    private void PlayerChange(int index) //Ä³¸¯ÅÍ º¯°æ
+    private void PlayerChange(int index) //ìºë¦­í„° ë³€ê²½
     {
         PlayerPrefs.SetInt("playerChoice", index);
-        Time.timeScale = 1; //°ÔÀÓ ½Ã°£ ÀÛµ¿
+        Time.timeScale = 1; //ê²Œì„ ì‹œê°„ ì‘ë™
         switch (index)
         {
             case 0:

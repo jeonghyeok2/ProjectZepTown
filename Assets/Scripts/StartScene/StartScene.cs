@@ -33,7 +33,7 @@ public class StartScene : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return)) //EnterÅ°¸¦ ´­·¯µµ ¹Ù·Î ÀÛµ¿°¡´ÉÇÏ°Ô 
+        if (Input.GetKeyDown(KeyCode.Return)) //Enterí‚¤ë¥¼ ëˆŒëŸ¬ë„ ë°”ë¡œ ì‘ë™ê°€ëŠ¥í•˜ê²Œ 
         {
             InputNameBtn();
         }
@@ -66,13 +66,13 @@ public class StartScene : MonoBehaviour
 
     public void InputNameBtn()
     {
-        _playerName = _inputPlayerName.text; //ÀÔ·ÂÇÑ °ª ¹Ş¾ÆÁÖ±â
+        _playerName = _inputPlayerName.text; //ì…ë ¥í•œ ê°’ ë°›ì•„ì£¼ê¸°
 
-        //ÀÌ¸§ÀÇ Å©±â°¡ ÁöÁ¤ÇÑ °ªº¸´Ù Å©¸é ÀçÀÔ·Â
+        //ì´ë¦„ì˜ í¬ê¸°ê°€ ì§€ì •í•œ ê°’ë³´ë‹¤ í¬ë©´ ì¬ì…ë ¥
         if (_playerName.Length <= 10 && _playerName.Length >= 2)
         {
             PlayerPrefs.SetString("PlayerName", _playerName);
-            SceneManager.LoadScene("MainScene"); //½Å ºÒ·¯¿À±â
+            SceneManager.LoadScene("MainScene"); //ì‹  ë¶ˆëŸ¬ì˜¤ê¸°
         }
         else 
         {

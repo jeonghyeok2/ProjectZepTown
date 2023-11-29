@@ -12,15 +12,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _playerName; // 플레이어의 이름 출력
     [SerializeField] private TextMeshProUGUI _changeName; // 플레이어의 이름 변경 Text
     [SerializeField] private TextMeshProUGUI _nowTime;
+    public TextMeshProUGUI _tutorText;
+    public string _text;
     public static GameManager Instance; //게임 매니져
-    
+
+    public GameObject _PopUpWindow; //팝업창
     public GameObject _changeNameWindow; //이름 변경 창 버튼 
     public GameObject _nameList; //참석자 창 버튼
     public GameObject _playerChangeWindow; //캐릭터 변경 창 버튼
+    public GameObject _tutorTextPanel;
     public Button _nameChangeBtn; //플레이어 이름 변경 확정 버튼
     public Button _firBtn;
     public Button _SecBtn;
     public Button _thiBtn;
+    public Button _tutorBell;
 
     private void Awake()
     {
@@ -39,14 +44,16 @@ public class GameManager : MonoBehaviour
         _firBtn.onClick.AddListener(() => PlayerChange(0));
         _SecBtn.onClick.AddListener(() => PlayerChange(1));
         _thiBtn.onClick.AddListener(() => PlayerChange(2));
+        _tutorBell.onClick.AddListener(() => TextConsoleWindowOpen(true));
     }
+
     private void Start()
     {
         _playerName.text = PlayerPrefs.GetString("PlayerName"); //플레이어의 이름 변경
     }
     private void Update()
     {
-        _nowTime.text = DateTime.Now.ToString("HH시 mm분");
+        _nowTime.text = DateTime.Now.ToString("HH시 mm분 ");
     }
     private void _playerChangeWindowOpen()
     {
@@ -76,7 +83,7 @@ public class GameManager : MonoBehaviour
             _changeName.text = null;
         }
     }
-    private void PlayerChange(int index)
+    private void PlayerChange(int index) //캐릭터 변경
     {
         PlayerPrefs.SetInt("playerChoice", index);
         Time.timeScale = 1; //게임 시간 작동
@@ -92,5 +99,15 @@ public class GameManager : MonoBehaviour
                 _playerChangeWindow.transform.GetChild(1).GameObject().SetActive(false);
                 break;
         }
+    }
+    public void NpcPopUP(bool isTrue)
+    {
+        _PopUpWindow.transform.GetChild(0).gameObject.SetActive(isTrue);
+    }
+    public void TextConsoleWindowOpen(bool isTrue)
+    {
+        _tutorTextPanel.transform.GetChild(0).gameObject.SetActive(isTrue);
+        _tutorText.text = _text;
+        NpcPopUP(false);
     }
 }
